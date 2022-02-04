@@ -6,7 +6,7 @@ col_ae_capital_utopian = {
 		is_capital = yes
 		exists = owner
 		owner = { 
-			is_country_type = ascended_empire
+			is_zofe_country = yes
 			is_gestalt = no
 		}
 		has_modifier = pm_Utopian_Paradise
@@ -30,7 +30,7 @@ col_ae_colony_utopian = {
 		is_capital = no
 		exists = owner
 		owner = { 
-			is_country_type = ascended_empire
+			is_zofe_country = yes
 			is_gestalt = no
 		}
 		has_modifier = pm_Utopian_Paradise
