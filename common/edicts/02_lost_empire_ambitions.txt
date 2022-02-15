@@ -4,9 +4,8 @@
 
 renounce_ascendancy = {
 	is_ambition = yes
-
+	resources = { category = edicts }
 	length = 0
-
 	potential = {
 		is_country_type = ascended_empire
 		NOR = {
@@ -43,52 +42,44 @@ renounce_ascendancy = {
 	}
 
 	ai_weight = {
-		weight = 0.5
-			modifier = {
-                factor = 0
-                has_ethic = ethic_fanatic_xenophobe
-            }
-            modifier = {
-                factor = 0
-                has_ethic = ethic_fanatic_militarist
-            }
-            modifier = {
-                factor = 0
-                has_ethic = ethic_fanatic_authoritarian
-            }
-            modifier = {
-                factor = 0
-                has_ethic = ethic_gestalt_consciousness
-            }
-			modifier = {
-				factor = 0
-				num_owned_planets > 10
-			}
-			modifier = {
-				factor = 0
-				fleet_power > 100000
-			}
+		weight = 100
+		modifier = {
+			factor = 0
+			num_owned_planets > 3
+		}
+		modifier = {
+			factor = 0
+			fleet_power > 70000
+		}
 	}
 }
 
 reclaim_ascendancy = {
 	
 	is_ambition = yes
+	
+	resources = {
+		category = edicts
+	}
 
 	length = 0
 
 	potential = {
 		is_country_type = lost_empire
+		has_country_flag = reclaim_ascendancy_edict_gained
 		OR = {
+			has_country_flag = lost_empire_rearmed
 			has_country_flag = lost_empire_mobilized
-			has_country_flag = reclaim_ascendancy_edict_gained
 		}
 		OR = {
 			is_subject = no
 			AND = {
 				is_subject = yes
 				any_country = {
-					is_country_type = ascended_empire
+					OR = {
+						is_country_type = ascended_empire
+						is_country_type = awakened_fallen_empire
+					}
 					is_overlord_to = root
 				}
 			}
@@ -115,6 +106,12 @@ reclaim_ascendancy = {
 			}
 			if = {
 				limit = {
+					has_country_flag = lost_empire_rearmed
+				}
+				remove_country_flag = lost_empire_rearmed
+			}
+			if = {
+				limit = {
 					has_country_flag = reclaim_ascendancy_edict_gained
 				}
 				remove_country_flag = reclaim_ascendancy_edict_gained
@@ -126,7 +123,10 @@ reclaim_ascendancy = {
 				set_country_flag = rebel_lost_empire
 				random_country = {
 					limit = { 
-						is_country_type = ascended_empire
+						OR = {
+							is_country_type = ascended_empire
+							is_country_type = awakened_fallen_empire
+						}
 						is_overlord_to = root
 					}
 					set_country_flag = rebel_lost_empire_overlord
@@ -150,8 +150,12 @@ reclaim_ascendancy = {
 				has_ethic = ethic_fanatic_authoritarian
 			}
 			modifier = {
-				factor = 2
+				factor = 200
 				relative_power = { who = overlord value >= equivalent }
+			}
+			modifier = {
+				factor = 0
+				fleet_power < 70000
 			}
 	}
 }

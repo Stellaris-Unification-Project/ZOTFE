@@ -5,33 +5,34 @@ infinity_system_system_initializer = {
 	class = "sc_black_hole"
 
 	flags = { infinity_system }
-	usage = custom_empire
+	usage = origin
 
 	planet = {
 		class = star
 		orbit_distance = 0
+		size = { min = @standard_min max = @standard_max }
 	}
 
 	change_orbit = 45
 	
 	planet = {
 		name = "Infinite Horizon"
-		class = "pc_ringworld_habitable"
+		class = "pc_shattered_ring_habitable"
 		orbit_angle = 30
 		orbit_distance = 0
-		size = 5
 		deposit_blockers = none
 		modifiers = none
 		starting_planet = yes
 		
 		init_effect = {
-			change_pc = "pc_ringworld_habitable"
+			change_pc = "pc_shattered_ring_habitable"
 			prevent_anomaly = yes
 			trigger_megastructure_icon = yes
 			set_planet_flag = ringworld_start
 			set_planet_flag = rich_ringworld
 			set_planet_flag = megastructure
-			set_planet_size = 5
+			
+			
 		}			
 	}	
 	planet = {
@@ -57,7 +58,7 @@ infinity_system_system_initializer = {
 		}	
 	}
 	planet = {
-		class = "pc_ringworld_habitable"
+		class = "pc_shattered_ring_habitable"
 		name = "Ancient Forge"
 		orbit_angle = 30
 		orbit_distance = 0
@@ -73,7 +74,7 @@ infinity_system_system_initializer = {
 				add_deposit = d_ancestor_ruins
 			}
 			while = {
-				count = 5
+				count = 1
 				add_deposit = d_ancestor_mineral_vault
 			}
 		}	
@@ -101,7 +102,7 @@ infinity_system_system_initializer = {
 		}	
 	}
 	planet = {
-		class = "pc_ringworld_habitable"
+		class = "pc_shattered_ring_habitable"
 		name = "Star Forge"
 		orbit_angle = 30
 		orbit_distance = 0
@@ -117,7 +118,7 @@ infinity_system_system_initializer = {
 				add_deposit = d_ancestor_ruins
 			}
 			while = {
-				count = 5
+				count = 1
 				add_deposit = d_ancestor_mineral_vault
 			}
 		}	
@@ -145,7 +146,7 @@ infinity_system_system_initializer = {
 		}	
 	}
 	planet = {
-		class = "pc_ringworld_habitable"
+		class = "pc_shattered_ring_habitable"
 		name = "Black Forge"
 		orbit_angle = 30
 		orbit_distance = 0
@@ -161,7 +162,7 @@ infinity_system_system_initializer = {
 				add_deposit = d_ancestor_ruins
 			}
 			while = {
-				count = 5
+				count = 1
 				add_deposit = d_ancestor_mineral_vault
 			}
 		}	
@@ -206,12 +207,13 @@ infinity_neighbor_t1 = {
 	planet = {
 		class = star
 		orbit_distance = 0
+		size = { min = @standard_min max = @standard_max }
 	}
 	
 	change_orbit = 45
 	
 	planet = {
-		class = "pc_ringworld_habitable"
+		class = "pc_shattered_ring_habitable"
 		name = "Justice Forge"
 		orbit_angle = 30
 		orbit_distance = 0	
@@ -228,7 +230,7 @@ infinity_neighbor_t1 = {
 				add_deposit = d_ancestor_ruins
 			}
 			while = {
-				count = 5
+				count = 1
 				add_deposit = d_ancestor_mineral_vault
 			}
 		}
@@ -256,7 +258,7 @@ infinity_neighbor_t1 = {
 		}	
 	}
 	planet = {
-		class = "pc_ringworld_habitable"
+		class = "pc_shattered_ring_habitable"
 		name = "Ring Segment D"
 		orbit_angle = 30
 		orbit_distance = 0
@@ -272,7 +274,7 @@ infinity_neighbor_t1 = {
 				add_deposit = d_ancestor_ruins
 			}
 			while = {
-				count = 5
+				count = 1
 				add_deposit = d_ancestor_mineral_vault
 			}
 		}	
@@ -300,7 +302,7 @@ infinity_neighbor_t1 = {
 		}	
 	}
 	planet = {
-		class = "pc_ringworld_habitable"
+		class = "pc_shattered_ring_habitable"
 		name = "Ring Section G"
 		orbit_angle = 30
 		orbit_distance = 0
@@ -316,7 +318,7 @@ infinity_neighbor_t1 = {
 				add_deposit = d_ancestor_ruins
 			}
 			while = {
-				count = 5
+				count = 1
 				add_deposit = d_ancestor_mineral_vault
 			}
 		}	
@@ -344,7 +346,7 @@ infinity_neighbor_t1 = {
 		}	
 	}
 	planet = {
-		class = "pc_ringworld_habitable"
+		class = "pc_shattered_ring_habitable"
 		name = "Ring Segment J"
 		orbit_angle = 30
 		orbit_distance = 0
@@ -360,7 +362,7 @@ infinity_neighbor_t1 = {
 				add_deposit = d_ancestor_ruins
 			}
 			while = {
-				count = 5
+				count = 1
 				add_deposit = d_ancestor_mineral_vault
 			}
 		}	
@@ -397,6 +399,7 @@ infinity_neighbor_t2 = {
 	planet = {
 		class = star
 		orbit_distance = 0
+		size = { min = @standard_min max = @standard_max }
 
 		init_effect = {
 			create_ambient_object = {
@@ -517,25 +520,21 @@ infinity_neighbor_t2 = {
 			type = "ring_world_ruined"
 			orbit_angle = 0
 			orbit_distance = 45
-			coords_from = planet
 		}
 		spawn_megastructure = {
 			type = "ring_world_ruined"
 			orbit_angle = 90
 			orbit_distance = 45
-			coords_from = planet
 		}
 		spawn_megastructure = {
 			type = "ring_world_ruined"
 			orbit_angle = 180
 			orbit_distance = 45
-			coords_from = planet
 		}
 		spawn_megastructure = {
 			type = "ring_world_ruined"
 			orbit_angle = 270
 			orbit_distance = 45
-			coords_from = planet
 		}
 
 		create_ambient_object = {

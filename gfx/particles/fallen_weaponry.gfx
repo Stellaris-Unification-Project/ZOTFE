@@ -187,6 +187,49 @@ objectTypes = {
 	}
 	pdxparticle = {
 	
+		name = "advanced_energy_lance_3_muzzle"
+		type = "advanced_energy_lance_3_muzzle"
+		
+		scale = 1.0
+	}
+	pdxparticle = {
+	
+		name = "advanced_energy_lance_3_hit"
+		type = "advanced_energy_lance_3_hit"
+		
+		scale = 1.0
+	}
+	pdxparticle = {
+	
+		name = "advanced_energy_lance_3_windup_effect"
+		type = "advanced_energy_lance_3_windup_effect"
+		
+		scale = 1.5
+	}
+	
+	pdxparticle = {
+	
+		name = "advanced_energy_lance_3_muzzle_windup_effect"
+		type = "advanced_energy_lance_3_muzzle_windup_effect"
+		
+		scale = 1.5
+	}
+	pdxparticle = {
+	
+		name = "advanced_energy_lance_3_m_muzzle"
+		type = "advanced_energy_lance_3_m_muzzle"
+		
+		scale = 0.5
+	}
+	pdxparticle = {
+	
+		name = "advanced_energy_lance_3_m_hit"
+		type = "advanced_energy_lance_3_m_hit"
+		
+		scale = 0.5
+	}
+	pdxparticle = {
+	
 		name = "advanced_energy_lance_4_muzzle"
 		type = "advanced_energy_lance_4_muzzle"
 		
@@ -720,6 +763,46 @@ objectTypes = {
 	
 		name = "advanced_arc_emitter_7_m_hit"
 		type = "advanced_arc_emitter_7_m_hit"
+		
+		scale = 0.5
+	}
+	pdxparticle = {
+	
+		name = "advanced_arc_emitter_8_muzzle"
+		type = "advanced_arc_emitter_8_muzzle"
+		
+		scale = 1
+	}
+	pdxparticle = {
+	
+		name = "advanced_arc_emitter_8_hit"
+		type = "advanced_arc_emitter_8_hit"
+		
+		scale = 1
+	}
+	pdxparticle = {
+		name = "advanced_arc_emitter_8_windup"
+		type = "advanced_arc_emitter_8_windup"
+		
+		scale = 1.0
+	}
+	pdxparticle = {
+		name = "advanced_arc_emitter_8_muzzle_windup"
+		type = "advanced_arc_emitter_8_muzzle_windup"
+		
+		scale = 1.0
+	}
+	pdxparticle = {
+	
+		name = "advanced_arc_emitter_8_m_muzzle"
+		type = "advanced_arc_emitter_8_m_muzzle"
+		
+		scale = 0.5
+	}
+	pdxparticle = {
+	
+		name = "advanced_arc_emitter_8_m_hit"
+		type = "advanced_arc_emitter_8_m_hit"
 		
 		scale = 0.5
 	}

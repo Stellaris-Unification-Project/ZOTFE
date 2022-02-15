@@ -9,12 +9,43 @@ namespace = lost_empire
 country_event = {
 	id = lost_empire.1001
 	title = lost_empire.1001.name
-	desc = lost_empire.1001.desc
-	picture = GFX_evt_fallen_empire
+#	desc = lost_empire.1001.desc
+	picture = GFX_evt_arguing_senate
 	show_sound = event_planetary_riot
 	location = from
 	
 	is_triggered_only = yes
+	
+	desc = {
+		text = lost_empire.1001.desc
+		trigger = {
+			NOT = { has_country_flag = hedonist_coup }
+		}
+	}
+	desc = {
+		text = lost_empire.1001.desc.01
+		trigger = {
+			has_country_flag = hedonist_coup
+		}
+	}
+	
+	immediate = {
+		check_default_country_energy = yes
+		check_default_country_minerals = yes
+		check_default_country_food = yes
+		check_default_country_consumer_goods = yes
+		check_default_country_alloys = yes
+		check_default_country_unity = yes
+		check_default_country_volatile_motes = yes
+		check_default_country_exotic_gases = yes
+		check_default_country_rare_crystals = yes
+		check_default_country_sr_dark_matter = yes
+		check_default_country_sr_zro = yes
+		check_default_country_sr_living_metal = yes
+		check_default_country_nanites = yes
+		check_default_country_minor_artifacts = yes
+		check_default_country_influence = yes
+	}
 	
 	option = {
 		name = lost_empire.1001.a
@@ -69,12 +100,204 @@ country_event = {
 					civic = civic_fallen_power
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			if = {
+				limit = {			
+					has_ethic = ethic_fanatic_spiritualist
+				}
+				every_owned_pop = { pop_change_ethic = "ethic_spiritualist" }
+			}
+			if = {
+				limit = {			
+					has_ethic = ethic_fanatic_materialist
+				}
+				every_owned_pop = { pop_change_ethic = "ethic_materialist" }
+			}
+			if = {
+				limit = {			
+					has_ethic = ethic_fanatic_xenophile
+				}
+				every_owned_pop = { pop_change_ethic = "ethic_xenophile" }
+			}
+			if = {
+				limit = {			
+					has_ethic = ethic_fanatic_xenophobe
+				}
+				every_owned_pop = { pop_change_ethic = "ethic_xenophobe" }
+			}
+			if = {
+				limit = {			
+					has_ethic = ethic_fanatic_militarist
+				}
+				every_owned_pop = { pop_change_ethic = "ethic_militarist" }
+			}
+			if = {
+				limit = {			
+					has_ethic = ethic_fanatic_pacifist
+				}
+				every_owned_pop = { pop_change_ethic = "ethic_pacifist" }
+			}
+			if = {
+				limit = {			
+					has_ethic = ethic_fanatic_authoritarian
+				}
+				every_owned_pop = { pop_change_ethic = "ethic_authoritarian" }
+			}
+			if = {
+				limit = {			
+					has_ethic = ethic_fanatic_egalitarian
+				}
+				every_owned_pop = { pop_change_ethic = "ethic_egalitarian" }
+			}
+			if = {
+				limit = {
+					NOR = {
+						has_ethic = ethic_fanatic_spiritualist
+						has_ethic = ethic_fanatic_materialist
+						has_ethic = ethic_fanatic_xenophile
+						has_ethic = ethic_fanatic_xenophobe
+						has_ethic = ethic_fanatic_militarist
+						has_ethic = ethic_fanatic_pacifist
+						has_ethic = ethic_fanatic_authoritarian
+						has_ethic = ethic_fanatic_egalitarian
+						is_gestalt = yes
+					}
+				}
+				every_owned_pop = { pop_change_ethic = "ethic_xenophobe" }
+			}
+			if = {
+				limit = { 
+					has_ethic = "ethic_spiritualist"
+					OR = {
+						has_ethic = ethic_fanatic_materialist
+						has_ethic = ethic_fanatic_xenophile
+						has_ethic = ethic_fanatic_xenophobe
+						has_ethic = ethic_fanatic_militarist
+						has_ethic = ethic_fanatic_pacifist
+						has_ethic = ethic_fanatic_authoritarian
+						has_ethic = ethic_fanatic_egalitarian
+					}
+				}
+				country_remove_ethic = "ethic_spiritualist"
+			}
+			if = {
+				limit = { 
+					has_ethic = "ethic_materialist"
+					OR = {
+						has_ethic = ethic_fanatic_spiritualist
+						has_ethic = ethic_fanatic_xenophile
+						has_ethic = ethic_fanatic_xenophobe
+						has_ethic = ethic_fanatic_militarist
+						has_ethic = ethic_fanatic_pacifist
+						has_ethic = ethic_fanatic_authoritarian
+						has_ethic = ethic_fanatic_egalitarian
+					}
+				}
+				country_remove_ethic = "ethic_materialist"
+			}
+			if = {
+				limit = { 
+					has_ethic = "ethic_xenophile"
+					OR = {
+						has_ethic = ethic_fanatic_spiritualist
+						has_ethic = ethic_fanatic_materialist
+						has_ethic = ethic_fanatic_xenophobe
+						has_ethic = ethic_fanatic_militarist
+						has_ethic = ethic_fanatic_pacifist
+						has_ethic = ethic_fanatic_authoritarian
+						has_ethic = ethic_fanatic_egalitarian
+					}
+				}
+				country_remove_ethic = "ethic_xenophile"
+			}
+			if = {
+				limit = { 
+					has_ethic = "ethic_xenophobe"
+					OR = {
+						has_ethic = ethic_fanatic_spiritualist
+						has_ethic = ethic_fanatic_materialist
+						has_ethic = ethic_fanatic_xenophile
+						has_ethic = ethic_fanatic_militarist
+						has_ethic = ethic_fanatic_pacifist
+						has_ethic = ethic_fanatic_authoritarian
+						has_ethic = ethic_fanatic_egalitarian
+					}
+				}
+				country_remove_ethic = "ethic_xenophobe"
+			}
+			if = {
+				limit = { 
+					has_ethic = "ethic_militarist"
+					OR = {
+						has_ethic = ethic_fanatic_spiritualist
+						has_ethic = ethic_fanatic_materialist
+						has_ethic = ethic_fanatic_xenophile
+						has_ethic = ethic_fanatic_xenophobe
+						has_ethic = ethic_fanatic_pacifist
+						has_ethic = ethic_fanatic_authoritarian
+						has_ethic = ethic_fanatic_egalitarian
+					}
+				}
+				country_remove_ethic = "ethic_militarist"
+			}
+			if = {
+				limit = { 
+					has_ethic = "ethic_pacifist"
+					OR = {
+						has_ethic = ethic_fanatic_spiritualist
+						has_ethic = ethic_fanatic_materialist
+						has_ethic = ethic_fanatic_xenophile
+						has_ethic = ethic_fanatic_xenophobe
+						has_ethic = ethic_fanatic_militarist
+						has_ethic = ethic_fanatic_authoritarian
+						has_ethic = ethic_fanatic_egalitarian
+					}
+				}
+				country_remove_ethic = "ethic_pacifist"
+			}
+			if = {
+				limit = { 
+					has_ethic = "ethic_authoritarian"
+					OR = {
+						has_ethic = ethic_fanatic_spiritualist
+						has_ethic = ethic_fanatic_materialist
+						has_ethic = ethic_fanatic_xenophile
+						has_ethic = ethic_fanatic_xenophobe
+						has_ethic = ethic_fanatic_militarist
+						has_ethic = ethic_fanatic_pacifist
+						has_ethic = ethic_fanatic_egalitarian
+					}
+				}
+				country_remove_ethic = "ethic_authoritarian"
+			}
+			if = {
+				limit = { 
+					has_ethic = "ethic_egalitarian"
+					OR = {
+						has_ethic = ethic_fanatic_spiritualist
+						has_ethic = ethic_fanatic_materialist
+						has_ethic = ethic_fanatic_xenophile
+						has_ethic = ethic_fanatic_xenophobe
+						has_ethic = ethic_fanatic_militarist
+						has_ethic = ethic_fanatic_pacifist
+						has_ethic = ethic_fanatic_authoritarian
+					}
+				}
+				country_remove_ethic = "ethic_egalitarian"
+			}
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOT = { is_same_value = root }
@@ -96,6 +319,24 @@ country_event = {
 	location = from
 	
 	is_triggered_only = yes
+	
+	immediate = {
+		check_default_country_energy = yes
+		check_default_country_minerals = yes
+		check_default_country_food = yes
+		check_default_country_consumer_goods = yes
+		check_default_country_alloys = yes
+		check_default_country_unity = yes
+		check_default_country_volatile_motes = yes
+		check_default_country_exotic_gases = yes
+		check_default_country_rare_crystals = yes
+		check_default_country_sr_dark_matter = yes
+		check_default_country_sr_zro = yes
+		check_default_country_sr_living_metal = yes
+		check_default_country_nanites = yes
+		check_default_country_minor_artifacts = yes
+		check_default_country_influence = yes
+	}
 	
 	option = {
 		name = lost_empire.1002.a
@@ -149,6 +390,190 @@ country_event = {
 					civic = civic_societal_turmoil
 					civic = civic_treaty_bound
 				}
+			}
+			if = {
+				limit = {			
+					has_ethic = ethic_fanatic_spiritualist
+				}
+				every_owned_pop = { pop_change_ethic = "ethic_spiritualist" }
+			}
+			if = {
+				limit = {			
+					has_ethic = ethic_fanatic_materialist
+				}
+				every_owned_pop = { pop_change_ethic = "ethic_materialist" }
+			}
+			if = {
+				limit = {			
+					has_ethic = ethic_fanatic_xenophile
+				}
+				every_owned_pop = { pop_change_ethic = "ethic_xenophile" }
+			}
+			if = {
+				limit = {			
+					has_ethic = ethic_fanatic_xenophobe
+				}
+				every_owned_pop = { pop_change_ethic = "ethic_xenophobe" }
+			}
+			if = {
+				limit = {			
+					has_ethic = ethic_fanatic_militarist
+				}
+				every_owned_pop = { pop_change_ethic = "ethic_militarist" }
+			}
+			if = {
+				limit = {			
+					has_ethic = ethic_fanatic_pacifist
+				}
+				every_owned_pop = { pop_change_ethic = "ethic_pacifist" }
+			}
+			if = {
+				limit = {			
+					has_ethic = ethic_fanatic_authoritarian
+				}
+				every_owned_pop = { pop_change_ethic = "ethic_authoritarian" }
+			}
+			if = {
+				limit = {			
+					has_ethic = ethic_fanatic_egalitarian
+				}
+				every_owned_pop = { pop_change_ethic = "ethic_egalitarian" }
+			}
+			if = {
+				limit = {
+					NOR = {
+						has_ethic = ethic_fanatic_spiritualist
+						has_ethic = ethic_fanatic_materialist
+						has_ethic = ethic_fanatic_xenophile
+						has_ethic = ethic_fanatic_xenophobe
+						has_ethic = ethic_fanatic_militarist
+						has_ethic = ethic_fanatic_pacifist
+						has_ethic = ethic_fanatic_authoritarian
+						has_ethic = ethic_fanatic_egalitarian
+						is_gestalt = yes
+					}
+				}
+				every_owned_pop = { pop_change_ethic = "ethic_xenophobe" }
+			}
+			if = {
+				limit = { 
+					has_ethic = "ethic_spiritualist"
+					OR = {
+						has_ethic = ethic_fanatic_materialist
+						has_ethic = ethic_fanatic_xenophile
+						has_ethic = ethic_fanatic_xenophobe
+						has_ethic = ethic_fanatic_militarist
+						has_ethic = ethic_fanatic_pacifist
+						has_ethic = ethic_fanatic_authoritarian
+						has_ethic = ethic_fanatic_egalitarian
+					}
+				}
+				country_remove_ethic = "ethic_spiritualist"
+			}
+			if = {
+				limit = { 
+					has_ethic = "ethic_materialist"
+					OR = {
+						has_ethic = ethic_fanatic_spiritualist
+						has_ethic = ethic_fanatic_xenophile
+						has_ethic = ethic_fanatic_xenophobe
+						has_ethic = ethic_fanatic_militarist
+						has_ethic = ethic_fanatic_pacifist
+						has_ethic = ethic_fanatic_authoritarian
+						has_ethic = ethic_fanatic_egalitarian
+					}
+				}
+				country_remove_ethic = "ethic_materialist"
+			}
+			if = {
+				limit = { 
+					has_ethic = "ethic_xenophile"
+					OR = {
+						has_ethic = ethic_fanatic_spiritualist
+						has_ethic = ethic_fanatic_materialist
+						has_ethic = ethic_fanatic_xenophobe
+						has_ethic = ethic_fanatic_militarist
+						has_ethic = ethic_fanatic_pacifist
+						has_ethic = ethic_fanatic_authoritarian
+						has_ethic = ethic_fanatic_egalitarian
+					}
+				}
+				country_remove_ethic = "ethic_xenophile"
+			}
+			if = {
+				limit = { 
+					has_ethic = "ethic_xenophobe"
+					OR = {
+						has_ethic = ethic_fanatic_spiritualist
+						has_ethic = ethic_fanatic_materialist
+						has_ethic = ethic_fanatic_xenophile
+						has_ethic = ethic_fanatic_militarist
+						has_ethic = ethic_fanatic_pacifist
+						has_ethic = ethic_fanatic_authoritarian
+						has_ethic = ethic_fanatic_egalitarian
+					}
+				}
+				country_remove_ethic = "ethic_xenophobe"
+			}
+			if = {
+				limit = { 
+					has_ethic = "ethic_militarist"
+					OR = {
+						has_ethic = ethic_fanatic_spiritualist
+						has_ethic = ethic_fanatic_materialist
+						has_ethic = ethic_fanatic_xenophile
+						has_ethic = ethic_fanatic_xenophobe
+						has_ethic = ethic_fanatic_pacifist
+						has_ethic = ethic_fanatic_authoritarian
+						has_ethic = ethic_fanatic_egalitarian
+					}
+				}
+				country_remove_ethic = "ethic_militarist"
+			}
+			if = {
+				limit = { 
+					has_ethic = "ethic_pacifist"
+					OR = {
+						has_ethic = ethic_fanatic_spiritualist
+						has_ethic = ethic_fanatic_materialist
+						has_ethic = ethic_fanatic_xenophile
+						has_ethic = ethic_fanatic_xenophobe
+						has_ethic = ethic_fanatic_militarist
+						has_ethic = ethic_fanatic_authoritarian
+						has_ethic = ethic_fanatic_egalitarian
+					}
+				}
+				country_remove_ethic = "ethic_pacifist"
+			}
+			if = {
+				limit = { 
+					has_ethic = "ethic_authoritarian"
+					OR = {
+						has_ethic = ethic_fanatic_spiritualist
+						has_ethic = ethic_fanatic_materialist
+						has_ethic = ethic_fanatic_xenophile
+						has_ethic = ethic_fanatic_xenophobe
+						has_ethic = ethic_fanatic_militarist
+						has_ethic = ethic_fanatic_pacifist
+						has_ethic = ethic_fanatic_egalitarian
+					}
+				}
+				country_remove_ethic = "ethic_authoritarian"
+			}
+			if = {
+				limit = { 
+					has_ethic = "ethic_egalitarian"
+					OR = {
+						has_ethic = ethic_fanatic_spiritualist
+						has_ethic = ethic_fanatic_materialist
+						has_ethic = ethic_fanatic_xenophile
+						has_ethic = ethic_fanatic_xenophobe
+						has_ethic = ethic_fanatic_militarist
+						has_ethic = ethic_fanatic_pacifist
+						has_ethic = ethic_fanatic_authoritarian
+					}
+				}
+				country_remove_ethic = "ethic_egalitarian"
 			}
 			every_country = {					# Notify Players
 				limit = {
@@ -294,6 +719,21 @@ country_event = {
 	
 	immediate = {
 		set_timed_country_flag = { flag = new_ascended_empire days = 3650 }
+		check_default_country_energy = yes
+		check_default_country_minerals = yes
+		check_default_country_food = yes
+		check_default_country_consumer_goods = yes
+		check_default_country_alloys = yes
+		check_default_country_unity = yes
+		check_default_country_volatile_motes = yes
+		check_default_country_exotic_gases = yes
+		check_default_country_rare_crystals = yes
+		check_default_country_sr_dark_matter = yes
+		check_default_country_sr_zro = yes
+		check_default_country_sr_living_metal = yes
+		check_default_country_nanites = yes
+		check_default_country_minor_artifacts = yes
+		check_default_country_influence = yes
 		every_country = {
 			limit = { 
 				OR = {
@@ -322,20 +762,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = dominion
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_spiritualist_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_galactic_superpower
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -358,6 +813,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -379,20 +837,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = dominion
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_spiritualist_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_beacon_of_prosperity
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -415,6 +888,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -436,20 +912,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = dominion
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_spiritualist_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_world_architect
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -472,6 +963,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -493,20 +987,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = dominion
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_spiritualist_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_scripture_scholars
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -529,6 +1038,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -550,20 +1062,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = satellite
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_materialist_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_galactic_superpower
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -586,6 +1113,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -607,20 +1137,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = satellite
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_materialist_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_beacon_of_prosperity
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -643,6 +1188,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -664,20 +1212,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = satellite
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_materialist_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_world_architect
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -700,6 +1263,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -721,20 +1287,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = satellite
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_materialist_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_fanatical_roboteers
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -757,6 +1338,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -778,20 +1362,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = signatory
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_xenophile_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_galactic_superpower
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -814,6 +1413,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -835,20 +1437,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = signatory
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_xenophile_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_beacon_of_prosperity
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -871,6 +1488,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -892,20 +1512,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = signatory
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_xenophile_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_world_architect
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -928,6 +1563,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -949,20 +1587,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = signatory
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_xenophile_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_fervid_xeno_collectors
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -985,6 +1638,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -1006,20 +1662,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = thrall
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_xenophobe_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_galactic_superpower
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -1042,6 +1713,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -1063,20 +1737,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = thrall
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_xenophobe_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_beacon_of_prosperity
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -1099,6 +1788,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -1120,20 +1812,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = thrall
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_xenophobe_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_world_architect
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -1156,6 +1863,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -1177,20 +1887,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = fe_clan_member
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_militarist_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_galactic_superpower
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -1213,6 +1938,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -1234,20 +1962,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = fe_clan_member
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_militarist_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_beacon_of_prosperity
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -1270,6 +2013,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -1291,20 +2037,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = fe_clan_member
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_militarist_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_world_architect
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -1327,6 +2088,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -1348,20 +2112,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = fe_clan_member
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_militarist_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_inspiring_warlords
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -1384,6 +2163,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -1405,20 +2187,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = fe_demilitarized_state
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_pacifist_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_galactic_superpower
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -1441,6 +2238,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -1462,20 +2262,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = fe_demilitarized_state
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_pacifist_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_beacon_of_prosperity
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -1498,6 +2313,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -1519,20 +2337,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = fe_demilitarized_state
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_pacifist_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_world_architect
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -1555,6 +2388,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -1576,20 +2412,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = fe_demilitarized_state
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_pacifist_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_idyllic_society
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -1612,6 +2463,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -1633,20 +2487,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = fe_puppet_state
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_authoritarian_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_galactic_superpower
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -1669,6 +2538,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -1690,20 +2562,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = fe_puppet_state
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_authoritarian_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_beacon_of_prosperity
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -1726,6 +2613,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -1747,20 +2637,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = fe_puppet_state
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_authoritarian_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_world_architect
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -1783,6 +2688,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -1804,20 +2712,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = fe_puppet_state
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_authoritarian_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_master_race
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -1840,6 +2763,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -1861,20 +2787,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = fe_union_state
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_egalitarian_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_galactic_superpower
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -1897,6 +2838,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -1918,20 +2862,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = fe_union_state
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_egalitarian_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_beacon_of_prosperity
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -1954,6 +2913,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -1975,20 +2937,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = fe_union_state
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_egalitarian_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_world_architect
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -2011,6 +2988,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -2032,20 +3012,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = fe_union_state
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_egalitarian_fervor
-					civic = civic_technological_mastery
+					civic = random
 					civic = civic_utopian_union
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -2068,6 +3063,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -2089,20 +3087,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = fe_satrapy
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
-					civic = civic_barbarism
-					civic = civic_technological_mastery
+#					civic = civic_barbarism
+					civic = random
 					civic = civic_barbaric_despoilers
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -2125,6 +3138,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -2146,20 +3162,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = tributary
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
-					civic = civic_isolationist
-					civic = civic_technological_mastery
+#					civic = civic_isolationist
+#					civic = random
 					civic = civic_inwards_perfection
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -2182,6 +3213,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -2203,20 +3237,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = fe_symbiote
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_ascended_mind
-					civic = civic_hive_knowledge
+					civic = random
 					civic = civic_all_seeing_eye
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -2239,6 +3288,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -2263,20 +3315,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = fe_auxiliary
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
 					civic = civic_ascended_machine
-					civic = civic_large_databanks
+					civic = random
 					civic = civic_all_seeing_machine
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -2299,6 +3366,9 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -2320,20 +3390,35 @@ country_event = {
 		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
 		set_country_flag = ascended_empire
 		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = fe_auxiliary
+			}
+		}
 		hidden_effect = {
 			change_government = {
 				civics = {
-					civic = civic_ascended_machine
-					civic = civic_large_databanks
-					civic = civic_machine_servitor
+#					civic = civic_ascended_machine
+#					civic = civic_large_databanks
+#					civic = civic_machine_servitor
 				}
 			}
-			add_resource = { minerals = 50000 }
-			add_resource = { energy = 50000 }
-			add_resource = { food = 5000 }
-			add_resource = { consumer_goods = 5000 }
-			add_resource = { alloys = 5000 }			
-			add_resource = { influence = 1000 }
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
 			every_country = {					# Notify Players
 				limit = {
 					NOR = {
@@ -2356,6 +3441,85 @@ country_event = {
 					set_country_flag = rebel_lost_empire_overlord
 					save_event_target_as = RebelLostEmpireOverlord
 					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = lost_empire.3.l						# Neutral
+		trigger = { 
+			NOR = {
+				has_ethic = ethic_fanatic_spiritualist
+				has_ethic = ethic_fanatic_materialist
+				has_ethic = ethic_fanatic_xenophile
+				has_ethic = ethic_fanatic_xenophobe
+				has_ethic = ethic_fanatic_militarist
+				has_ethic = ethic_fanatic_pacifist
+				has_ethic = ethic_fanatic_authoritarian
+				has_ethic = ethic_fanatic_egalitarian
+			}
+		}
+		ai_chance = {										# AI chance
+			factor = 1000
+		}
+		set_country_type = ascended_empire
+		set_timed_country_flag = { flag = ai_no_wars days = 3650 }
+		set_country_flag = ascended_empire
+		remove_country_flag = lost_empire
+		every_subject = {
+			set_subject_of = {
+				who = root
+				subject_type = vassal
+			}
+		}
+		hidden_effect = {
+			change_government = {
+				civics = random
+			}
+			add_ascended_empire_energy = yes
+			add_ascended_empire_minerals = yes
+			add_ascended_empire_food = yes
+			add_ascended_empire_consumer_goods = yes
+			add_ascended_empire_alloys = yes
+			add_ascended_empire_unity = yes
+			add_ascended_empire_volatile_motes = yes
+			add_ascended_empire_exotic_gases = yes
+			add_ascended_empire_rare_crystals = yes
+			add_ascended_empire_sr_dark_matter = yes
+			add_ascended_empire_sr_zro = yes
+			add_ascended_empire_sr_living_metal = yes
+			add_ascended_empire_nanites = yes
+			add_ascended_empire_minor_artifacts = yes
+			add_ascended_empire_influence = yes
+			every_country = {					# Notify Players
+				limit = {
+					NOR = {
+						is_same_value = root
+						is_overlord_to = root
+					}
+					is_ai = no
+				}
+				country_event = { id = lost_empire.4 }
+			}
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				save_event_target_as = RebelLostEmpire
+				every_country = {					
+					limit = {
+						is_overlord_to = root		
+					}
+					set_country_flag = rebel_lost_empire_overlord
+					save_event_target_as = RebelLostEmpireOverlord
+					event_target:RebelLostEmpireOverlord = { country_event = { id = lost_empire.8 } }
+				}
+				set_subject_of = {
+					who = none
 				}
 			}
 		}
@@ -2689,6 +3853,23 @@ country_event = {
 		}
 		text = "lost_empire.4.desc.ka"
 	}	
+	desc = {
+		trigger = {
+			FROM = {
+				NOR = {
+					has_ethic = ethic_fanatic_spiritualist
+					has_ethic = ethic_fanatic_materialist
+					has_ethic = ethic_fanatic_xenophile
+					has_ethic = ethic_fanatic_xenophobe
+					has_ethic = ethic_fanatic_militarist
+					has_ethic = ethic_fanatic_pacifist
+					has_ethic = ethic_fanatic_authoritarian
+					has_ethic = ethic_fanatic_egalitarian
+				}
+			}
+		}
+		text = "lost_empire.4.desc.l"
+	}	
 	
 	is_triggered_only = yes
 
@@ -2711,7 +3892,7 @@ country_event = {
 	trigger = {
 		is_country_type = lost_empire
 		is_at_war = no
-		fleet_power < 5000
+		fleet_power < 20000
 		NOT = { has_country_flag = lost_empire_fleet_spawn }
 	}
 	
@@ -2816,7 +3997,10 @@ country_event = {
 	option = {
 		name = lost_empire.8.a
 		trigger = {
-			is_country_type = ascended_empire
+			OR = {
+				is_country_type = ascended_empire
+				is_country_type = awakened_fallen_empire
+			}
 			has_country_flag = rebel_lost_empire_overlord
 		}
 		declare_war = {
@@ -2824,7 +4008,9 @@ country_event = {
 			name = "NAME_The_Last_Crusade"
 			attacker_war_goal = "wg_total_annihilation"
 		}
-		
+		ai_chance = {
+			factor = 1000
+		}
 	}
 	
 	option = {
@@ -2850,7 +4036,10 @@ country_event = {
 		NOT = {
 			any_country = {
 				is_overlord_to = root
-				is_country_type = ascended_empire
+				OR = {
+					is_country_type = ascended_empire
+					is_country_type = awakened_fallen_empire
+				}
 			}
 		}
 	}
@@ -3041,59 +4230,238 @@ country_event = {
 }
 
 #Ascended Empire gains Hedonist pops
-event = {
+country_event = {
 	id = lost_empire.18
 	hide_window = yes
 	
 	trigger = {
-		end_game_years_passed > 0
+		end_game_years_passed > 100
+		is_zofe_country = yes
+		is_gestalt = no
+		has_technology = tech_fallen_technologies_1
+		has_technology = tech_fallen_technologies_2
+		NOR = {
+			has_country_flag = new_ascended_empire
+			has_country_flag = no_decadence
+			has_country_flag = recent_hedonist
+		}
+		has_edict = rejuvenate_society
+	}
+	
+	
+	immediate = {
+		if = {
+			limit = {
+				has_modifier = promoted_hedonist
+			}
+			set_timed_country_flag = { flag = recent_hedonist days = 30 }
+		}
+		if = {
+			limit = {
+				has_modifier = suppressed_hedonist
+			}
+			set_timed_country_flag = { flag = recent_hedonist days = 90 }
+		}
+		if = {
+			limit = {
+				NOR = {
+					has_modifier = promoted_hedonist
+					has_modifier = suppressed_hedonist
+				}
+			}
+			set_timed_country_flag = { flag = recent_hedonist days = 60 }
+		}
+		random_list = {
+			50 = { 				
+				random_owned_planet = {
+						limit = {
+							any_owned_pop = {
+								is_sapient = yes
+								has_citizenship_rights = yes
+								is_pop_category = worker
+								is_enslaved = no
+								is_being_purged = no
+								is_robot_pop = no
+								is_being_assimilated = no
+								NOR = {
+									has_pop_flag = decadent_pop
+									has_job = ae_hedonist
+								}
+							}
+						}
+						random_owned_pop = {
+							limit = {
+								is_sapient = yes
+								has_citizenship_rights = yes
+								is_pop_category = worker
+								is_enslaved = no
+								is_being_purged = no
+								is_robot_pop = no
+								is_being_assimilated = no
+								NOR = {
+									has_pop_flag = decadent_pop
+									has_job = ae_hedonist
+								}
+							}
+							set_pop_flag = decadent_pop
+						}
+				}
+			}
+			50 = { 
+				random_owned_planet = {
+						limit = {
+							any_owned_pop = {
+								is_sapient = yes
+								has_citizenship_rights = yes
+								is_unemployed = yes
+								is_enslaved = no
+								is_being_purged = no
+								is_robot_pop = no
+								is_being_assimilated = no
+								NOR = {
+									has_pop_flag = decadent_pop
+									has_job = ae_hedonist
+								}
+							}
+						}
+						random_owned_pop = {
+							limit = {
+								is_sapient = yes
+								has_citizenship_rights = yes
+								is_unemployed = yes
+								is_enslaved = no
+								is_being_purged = no
+								is_robot_pop = no
+								is_being_assimilated = no
+								NOR = {
+									has_pop_flag = decadent_pop
+									has_job = ae_hedonist
+								}
+							}
+							set_pop_flag = decadent_pop
+						}
+				}
+			}
+		}
+	}
+}
+
+#Hedonist Pop dies due to too much fun.
+event = {
+	id = lost_empire.19
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		end_game_years_passed > 100
 		any_country = {
 			is_country_type = ascended_empire
 			is_gestalt = no
-			has_technology = tech_fallen_technologies_3
 			NOR = {
 				has_country_flag = new_ascended_empire
 				has_country_flag = no_decadence
 			}
-			any_owned_planet = {
-				NOT = { has_modifier = pm_Utopian_Paradise }
-			}
+			any_owned_pop = { has_job = ae_hedonist }
 		}
 	}
 	
 	immediate = {
-		every_country = {
+		random_list = {
+    		10 = {	
+				every_playable_country = {
+					limit = {
+						is_country_type = ascended_empire
+						is_gestalt = no	
+						NOR = {
+							has_country_flag = new_ascended_empire
+							has_country_flag = no_decadence
+						}
+						any_owned_pop = { has_job = ae_hedonist }
+					}
+					country_event = { id = lost_empire.20 }
+				}
+    		}
+    		90 = {}
+    	}
+	}
+}
+
+#Hedonist Pop death notification
+country_event = {
+	id = lost_empire.20
+	title = lost_empire.20.name
+	desc = lost_empire.20.desc
+	picture = GFX_evt_dark_alley
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = lost_empire.20.a
+		random_owned_pop = {
+    		limit = { has_job = ae_hedonist }
+   			kill_pop = yes
+    	}
+	}
+}
+
+#Hedonist Coup!
+country_event = {
+	id = lost_empire.21
+	title = lost_empire.21.name
+	desc = lost_empire.21.desc
+	picture = GFX_evt_announcement
+	show_sound = event_factions
+	location = capital_scope
+	
+	trigger = {
+		is_country_type = ascended_empire
+		NOT = { has_country_flag = hedonist_coup }
+		count_owned_pop = {
+			count >= 333
 			limit = {
-				is_country_type = ascended_empire
-				is_gestalt = no
-				has_technology = tech_fallen_technologies_3
-				NOR = {
-					has_country_flag = new_ascended_empire
-					has_country_flag = no_decadence
+				has_job = ae_hedonist
+			}
+		}
+		OR = {
+			AND = {
+				any_pop_faction = {
+					is_pop_faction_type = hedonist
+					faction_approval < 0.35
+				}	
+				count_owned_pop = {
+					count < 666
+					limit = {
+						has_job = ae_hedonist
+					}
 				}
 			}
-			every_owned_planet = {
-				limit = {
-					NOT = { has_modifier = pm_Utopian_Paradise }
-				}
-				random_owned_pop = {
-					if = {
-						limit = {
-							worker_job_check_trigger = yes
-							is_enslaved = no
-							is_being_purged = no
-							is_robot_pop = no
-							is_being_assimilated = no
-							has_citizenship_rights = yes
-							NOR = {
-								has_pop_flag = decadent_pop
-								has_job = ae_hedonist
-							}
-						}
-						set_pop_flag = decadent_pop
+			AND = {
+				any_pop_faction = {
+					is_pop_faction_type = hedonist
+					faction_approval < 0.75
+				}	
+				count_owned_pop = {
+					count >= 666
+					limit = {
+						has_job = ae_hedonist
 					}
 				}
 			}
 		}
+	}
+	
+	mean_time_to_happen = {
+		years = 10
+	}
+		
+	immediate = {
+		set_country_flag = hedonist_coup
+	}
+	
+	option = {
+		name = lost_empire.21.a
+		kill_leader = { type = ruler show_notification = no }
+		country_event = { id = lost_empire.1001 }
 	}
 }

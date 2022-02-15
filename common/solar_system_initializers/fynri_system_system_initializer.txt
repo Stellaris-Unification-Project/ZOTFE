@@ -5,19 +5,19 @@ fynri_system_system_initializer = {
 	class = "sc_neutron_star"
 
 	flags = { fynri_system }
-	usage = custom_empire
+	usage = origin
 
 	planet = {
 		class = star
 		orbit_distance = 0
-
+		size = { min = @standard_min max = @standard_max }
 	}
 
 	change_orbit = 45
 	
 	planet = {
 		name = "Serenity Garden"
-		class = "pc_ringworld_habitable"
+		class = "pc_shattered_ring_habitable"
 		orbit_angle = 30
 		orbit_distance = 0
 
@@ -26,13 +26,14 @@ fynri_system_system_initializer = {
 		starting_planet = yes
 		
 		init_effect = {
-			change_pc = "pc_ringworld_habitable"
+			change_pc = "pc_shattered_ring_habitable"
 			prevent_anomaly = yes
 			trigger_megastructure_icon = yes
 			set_planet_flag = ringworld_start
 			set_planet_flag = megastructure
 			set_planet_flag = op_ringworld
-			set_planet_size = 5
+			
+			
 		}
 	}			
 	planet = {
@@ -56,7 +57,7 @@ fynri_system_system_initializer = {
 		}
 	}
 	planet = {
-		class = "pc_ringworld_habitable"
+		class = "pc_shattered_ring_habitable"
 		name = "Serenity College"
 		orbit_angle = 30
 		orbit_distance = 0
@@ -74,7 +75,7 @@ fynri_system_system_initializer = {
 				add_deposit = d_ancestor_ruins
 			}
 			while = {
-				count = 5
+				count = 1
 				add_deposit = d_ancestor_mineral_vault
 			}
 		}
@@ -102,7 +103,7 @@ fynri_system_system_initializer = {
 		}	
 	}
 	planet = {
-		class = "pc_ringworld_habitable"
+		class = "pc_shattered_ring_habitable"
 		name = "Serenity Spire"
 		orbit_angle = 30
 		orbit_distance = 0
@@ -120,7 +121,7 @@ fynri_system_system_initializer = {
 				add_deposit = d_ancestor_ruins
 			}
 			while = {
-				count = 5
+				count = 1
 				add_deposit = d_ancestor_mineral_vault
 			}
 		}
@@ -148,7 +149,7 @@ fynri_system_system_initializer = {
 		}	
 	}
 	planet = {
-		class = "pc_ringworld_habitable"
+		class = "pc_shattered_ring_habitable"
 		name = "Serenity Grid"
 		orbit_angle = 30
 		orbit_distance = 0
@@ -166,7 +167,7 @@ fynri_system_system_initializer = {
 				add_deposit = d_ancestor_ruins
 			}
 			while = {
-				count = 5
+				count = 1
 				add_deposit = d_ancestor_mineral_vault
 			}
 		}
@@ -212,6 +213,7 @@ fynri_1 = {
 		class = star
 		orbit_distance = 0
 		orbit_angle = 0
+		size = { min = @standard_min max = @standard_max }
 
 		init_effect = {
 			create_ambient_object = {
@@ -256,10 +258,9 @@ fynri_1 = {
 	change_orbit = 45
 	
 	planet = {
-		class = "pc_ringworld_habitable"
+		class = "pc_shattered_ring_habitable"
 		name = "Tranquility Garden"
 		orbit_angle = 30
-		size = 5
 		orbit_distance = 0
 		deposit_blockers = none
 		modifiers = none
@@ -277,7 +278,7 @@ fynri_1 = {
 				add_deposit = d_ancestor_ruins
 			}
 			while = {
-				count = 5
+				count = 1
 				add_deposit = d_ancestor_mineral_vault
 			}
 		}
@@ -309,19 +310,16 @@ fynri_1 = {
 			type = "ring_world_ruined"
 			orbit_angle = 154
 			orbit_distance = 45
-			coords_from = planet
 		}
 		spawn_megastructure = {
 			type = "ring_world_ruined"
 			orbit_angle = 244
 			orbit_distance = 45
-			coords_from = planet
 		}
 		spawn_megastructure = {
 			type = "ring_world_ruined"
 			orbit_angle = 334
 			orbit_distance = 45
-			coords_from = planet
 		}
 	}
 }
@@ -333,6 +331,7 @@ fynri_2 = {
 	planet = {
 		class = star
 		orbit_distance = 0
+		size = { min = @standard_min max = @standard_max }
 
 		init_effect = {
 			create_ambient_object = {
@@ -453,25 +452,21 @@ fynri_2 = {
 			type = "ring_world_ruined"
 			orbit_angle = 0
 			orbit_distance = 45
-			coords_from = planet
 		}
 		spawn_megastructure = {
 			type = "ring_world_ruined"
 			orbit_angle = 90
 			orbit_distance = 45
-			coords_from = planet
 		}
 		spawn_megastructure = {
 			type = "ring_world_ruined"
 			orbit_angle = 180
 			orbit_distance = 45
-			coords_from = planet
 		}
 		spawn_megastructure = {
 			type = "ring_world_ruined"
 			orbit_angle = 270
 			orbit_distance = 45
-			coords_from = planet
 		}
 
 		create_ambient_object = {

@@ -18,8 +18,8 @@ particle={
 		}
 		color={
 			x=255.000
-			y=240.000
-			z=120.000
+			y=200.000
+			z=150.000
 			alpha=10.000,fade_alpha
 		}
 		position={
@@ -194,8 +194,8 @@ particle={
 		}
 		color={
 			x=255.000
-			y=220.000
-			z=180.000
+			y=200.000
+			z=150.000
 			alpha=255.000,fade_alpha
 		}
 		position={
@@ -261,8 +261,8 @@ particle={
 		}
 		color={
 			x=255.000
-			y=240.000
-			z=120.000
+			y=200.000
+			z=150.000
 			alpha=255.000,fade_alpha
 		}
 		position={
@@ -328,8 +328,8 @@ particle={
 		}
 		color={
 			x=255.000
-			y=240.000
-			z=120.000
+			y=200.000
+			z=150.000
 			alpha=100.000,fade_alpha
 		}
 		position={
@@ -406,8 +406,8 @@ particle={
 		}
 		color={
 			x=255.000
-			y=240.000
-			z=120.000
+			y=200.000
+			z=150.000
 			alpha=10.000,fade_alpha
 		}
 		position={
@@ -582,8 +582,8 @@ particle={
 		}
 		color={
 			x=255.000
-			y=220.000
-			z=180.000
+			y=200.000
+			z=150.000
 			alpha=255.000,fade_alpha
 		}
 		position={
@@ -649,8 +649,8 @@ particle={
 		}
 		color={
 			x=255.000
-			y=240.000
-			z=120.000
+			y=200.000
+			z=150.000
 			alpha=255.000,fade_alpha
 		}
 		position={
@@ -716,8 +716,8 @@ particle={
 		}
 		color={
 			x=255.000
-			y=240.000
-			z=120.000
+			y=200.000
+			z=150.000
 			alpha=100.000,fade_alpha
 		}
 		position={

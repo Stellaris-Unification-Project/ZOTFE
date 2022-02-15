@@ -88,7 +88,6 @@ cb_total_annihilation = {
 		NOT = { is_in_federation_with = from }
 		OR = {
 			from = {
-			OR = {
 				OR = {
 					has_valid_civic = civic_fanatic_purifiers
 					has_valid_civic = civic_hive_devouring_swarm
@@ -175,8 +174,8 @@ cb_total_annihilation = {
 }
 
 cb_dismantle = {
-	show_in_diplomacy = yes
-	show_notification = yes
+	show_in_diplomacy = no
+	show_notification = no
 	potential = {
 		is_country_type = default	
 		NOR = {

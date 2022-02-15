@@ -3,20 +3,30 @@
 beacon_of_infinity_system_initializer = {
 	name = "NAME_Beacon_of_Infinity"
 	class = "sc_g"
-
-	flags = { beacon_system }
-	usage = custom_empire
+	
+	flags = { empire_home_system ring_world_built beacon_system }
+	usage = origin
+	
+	init_effect = {
+		every_neighbor_system = {
+			set_star_flag = empire_cluster
+			every_neighbor_system = {
+				set_star_flag = empire_cluster
+			}
+		}
+	}
 
 	planet = {
 		class = star
 		orbit_distance = 0
+		size = { min = @standard_min max = @standard_max }
 	}
 
 	change_orbit = 45
 	
 	planet = {
 		name = "NAME_Palatial_District"
-		class = "pc_ringworld_habitable"
+		class = "pc_shattered_ring_habitable"
 		orbit_angle = 30
 		orbit_distance = 0
 
@@ -24,16 +34,15 @@ beacon_of_infinity_system_initializer = {
 		modifiers = none
 		starting_planet = yes
 		
+		flags = { ignore_startup_effect megastructure }
+		
 		init_effect = {
-			change_pc = "pc_ringworld_habitable"
 			prevent_anomaly = yes
 			trigger_megastructure_icon = yes
-			set_planet_flag = megastructure
 			set_planet_flag = ringworld_start
-			set_planet_size = 5
-			
 		}
-	}				
+
+	}	
 	planet = {
 		class = "pc_ringworld_tech"
 		name = "NAME_Ring_Section_B"
@@ -55,7 +64,7 @@ beacon_of_infinity_system_initializer = {
 		}		
 	}
 	planet = {
-		class = "pc_ringworld_habitable"
+		class = "pc_shattered_ring_habitable"
 		name = "NAME_Trade_District"
 		orbit_angle = 30
 		orbit_distance = 0
@@ -72,7 +81,7 @@ beacon_of_infinity_system_initializer = {
 				add_deposit = d_ancestor_ruins
 			}
 			while = {
-				count = 5
+				count = 1
 				add_deposit = d_ancestor_mineral_vault
 			}
 		}
@@ -98,7 +107,7 @@ beacon_of_infinity_system_initializer = {
 		}		
 	}
 	planet = {
-		class = "pc_ringworld_habitable"
+		class = "pc_shattered_ring_habitable"
 		name = "NAME_Industrial_District"
 		orbit_angle = 30
 		orbit_distance = 0
@@ -116,7 +125,7 @@ beacon_of_infinity_system_initializer = {
 				add_deposit = d_ancestor_ruins
 			}
 			while = {
-				count = 5
+				count = 1
 				add_deposit = d_ancestor_mineral_vault
 			}
 		}
@@ -145,7 +154,7 @@ beacon_of_infinity_system_initializer = {
 		}		
 	}
 	planet = {
-		class = "pc_ringworld_habitable"
+		class = "pc_shattered_ring_habitable"
 		name = "NAME_Agrarian_District"
 		orbit_angle = 30
 		orbit_distance = 0
@@ -163,7 +172,7 @@ beacon_of_infinity_system_initializer = {
 				add_deposit = d_ancestor_ruins
 			}
 			while = {
-				count = 5
+				count = 1
 				add_deposit = d_ancestor_mineral_vault
 			}
 		}
@@ -207,6 +216,7 @@ beacon_of_stability = {
 		class = star
 		orbit_distance = 0
 		orbit_angle = 0
+		size = { min = @standard_min max = @standard_max }
 
 		init_effect = {
 			create_ambient_object = {
@@ -252,7 +262,7 @@ beacon_of_stability = {
 	
 	
 	planet = {
-		class = "pc_ringworld_habitable"
+		class = "pc_shattered_ring_habitable"
 		name = "NAME_Eternal_Bastion"
 		orbit_angle = 30
 		orbit_distance = 0
@@ -270,7 +280,7 @@ beacon_of_stability = {
 				add_deposit = d_ancestor_ruins
 			}
 			while = {
-				count = 5
+				count = 1
 				add_deposit = d_ancestor_mineral_vault
 			}
 		}
@@ -301,19 +311,16 @@ beacon_of_stability = {
 			type = "ring_world_ruined"
 			orbit_angle = 154
 			orbit_distance = 45
-			coords_from = planet
 		}
 		spawn_megastructure = {
 			type = "ring_world_ruined"
 			orbit_angle = 244
 			orbit_distance = 45
-			coords_from = planet
 		}
 		spawn_megastructure = {
 			type = "ring_world_ruined"
 			orbit_angle = 334
 			orbit_distance = 45
-			coords_from = planet
 		}
 	}
 }
@@ -325,6 +332,7 @@ beacon_of_perpetuity = {
 	planet = {
 		class = star
 		orbit_distance = 0
+		size = { min = @standard_min max = @standard_max }
 
 		init_effect = {
 			create_ambient_object = {
@@ -445,25 +453,21 @@ beacon_of_perpetuity = {
 			type = "ring_world_ruined"
 			orbit_angle = 0
 			orbit_distance = 45
-			coords_from = planet
 		}
 		spawn_megastructure = {
 			type = "ring_world_ruined"
 			orbit_angle = 90
 			orbit_distance = 45
-			coords_from = planet
 		}
 		spawn_megastructure = {
 			type = "ring_world_ruined"
 			orbit_angle = 180
 			orbit_distance = 45
-			coords_from = planet
 		}
 		spawn_megastructure = {
 			type = "ring_world_ruined"
 			orbit_angle = 270
 			orbit_distance = 45
-			coords_from = planet
 		}
 
 		create_ambient_object = {

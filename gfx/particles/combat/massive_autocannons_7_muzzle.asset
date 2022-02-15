@@ -18,8 +18,8 @@ particle={
 		}
 		color={
 			x=255.000
-			y=240.000
-			z=120.000
+			y=200.000
+			z=150.000
 			alpha=75.000,flash_fade
 		}
 		position={
@@ -61,8 +61,8 @@ particle={
 		}
 		color={
 			x=255.000
-			y=240.000
-			z=120.000
+			y=200.000
+			z=150.000
 			alpha=50.000,flash_fade
 		}
 		position={
@@ -102,8 +102,8 @@ particle={
 		}
 		color={
 			x=255.000
-			y=240.000
-			z=120.000
+			y=200.000
+			z=150.000
 			alpha=255.000,flash_fade
 		}
 		position={
@@ -142,8 +142,8 @@ particle={
 		}
 		color={
 			x=255.000
-			y=240.000
-			z=120.000
+			y=200.000
+			z=150.000
 			alpha=75.000,flash_fade
 		}
 		position={

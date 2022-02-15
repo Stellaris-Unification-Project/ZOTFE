@@ -7,6 +7,7 @@ dyson_ring_system_system_initializer = {
 	planet = {
 		class = star
 		orbit_distance = 0
+		size = { min = @standard_min max = @standard_max }
 
 		init_effect = {
 			create_ambient_object = {
@@ -296,25 +297,21 @@ dyson_ring_system_system_initializer = {
 			type = "ring_world_ruined"
 			orbit_angle = 0
 			orbit_distance = 45
-			coords_from = planet
 		}
 		spawn_megastructure = {
 			type = "ring_world_ruined"
 			orbit_angle = 90
 			orbit_distance = 45
-			coords_from = planet
 		}
 		spawn_megastructure = {
 			type = "ring_world_ruined"
 			orbit_angle = 180
 			orbit_distance = 45
-			coords_from = planet
 		}
 		spawn_megastructure = {
 			type = "ring_world_ruined"
 			orbit_angle = 270
 			orbit_distance = 45
-			coords_from = planet
 		}
 
 		create_ambient_object = {
@@ -362,6 +359,7 @@ science_nexus_ring_initializer = {
 	planet = {
 		class = star
 		orbit_distance = 0
+		size = { min = @standard_min max = @standard_max }
 		
 		init_effect = {
 			create_ambient_object = {
@@ -493,7 +491,7 @@ science_nexus_ring_initializer = {
 	init_effect = {
 		spawn_megastructure = { 
 			type = "think_tank_ruined" 
-			coords_from = event_target:nexus_planet
+			planet = event_target:nexus_planet
 
 			init_effect = {
 				create_ambient_object = {
@@ -546,25 +544,21 @@ science_nexus_ring_initializer = {
 			type = "ring_world_ruined"
 			orbit_angle = 0
 			orbit_distance = 45
-			coords_from = planet
 		}
 		spawn_megastructure = {
 			type = "ring_world_ruined"
 			orbit_angle = 90
 			orbit_distance = 45
-			coords_from = planet
 		}
 		spawn_megastructure = {
 			type = "ring_world_ruined"
 			orbit_angle = 180
 			orbit_distance = 45
-			coords_from = planet
 		}
 		spawn_megastructure = {
 			type = "ring_world_ruined"
 			orbit_angle = 270
 			orbit_distance = 45
-			coords_from = planet
 		}
 	}
 }

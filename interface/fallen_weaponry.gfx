@@ -1,6 +1,10 @@
 spriteTypes = {
 
 	spriteType = {
+		name = "GFX_ship_part_omni_titan_lance"
+		texturefile = "gfx/interface/icons/ship_parts/ship_part_omni_titan_lance.dds"
+	}
+	spriteType = {
 		name = "GFX_ship_part_omni_lance"
 		texturefile = "gfx/interface/icons/ship_parts/ship_part_omni_lance.dds"
 	}
@@ -73,6 +77,26 @@ spriteTypes = {
 		texturefile = "gfx/interface/icons/ship_parts/ship_part_dark_matter_plating.dds"		
 	}
 	spriteType = {
+		name = "GFX_ship_part_dark_energy_shield_booster"
+		texturefile = "gfx/interface/icons/ship_parts/ship_part_dark_energy_shield_booster.dds"
+	}
+	spriteType = {
+		name = "GFX_ship_part_dark_energy_power_core"
+		texturefile = "gfx/interface/icons/ship_parts/ship_part_dark_energy_power_core.dds"
+	}
+	spriteType = {
+		name = "GFX_ship_part_dark_energy_jump_drive"
+		texturefile = "gfx/interface/icons/ship_parts/ship_part_dark_energy_jump_drive.dds"
+	}
+	spriteType = {
+		name = "GFX_ship_part_dark_energy_thruster"
+		texturefile = "gfx/interface/icons/ship_parts/ship_part_dark_energy_thruster.dds"
+	}
+	spriteType = {
+		name = "GFX_ship_part_titan_plating"
+		texturefile = "gfx/interface/icons/ship_parts/ship_part_titan_plating.dds"
+	}
+	spriteType = {
 		name = "GFX_ship_part_improved_dragon_armor"
 		texturefile = "gfx/interface/icons/ship_parts/ship_part_improved_dragon_armor.dds"
 	}
@@ -80,4 +104,25 @@ spriteTypes = {
 		name = "GFX_ship_part_titan_armor"
 		texturefile = "gfx/interface/icons/ship_parts/ship_part_titan_armor.dds"
 	}
+	spriteType = {
+		name = "GFX_ship_part_dark_energy_afterburners"
+		texturefile = "gfx/interface/icons/ship_parts/ship_part_dark_energy_afterburners.dds"
+	}
+	spriteType = {
+		name = "GFX_ship_part_dark_energy_sensors"
+		texturefile = "gfx/interface/icons/ship_parts/ship_part_dark_energy_sensors.dds"
+	}
+	spriteType = {
+		name = "GFX_ship_part_infinity_encoder"
+		texturefile = "gfx/interface/icons/ship_parts/ship_part_infinity_encoder.dds"
+	}
+	spriteType = {
+		name = "GFX_ship_part_infinity_decoder"
+		texturefile = "gfx/interface/icons/ship_parts/ship_part_infinity_decoder.dds"
+	}
+	spriteType = {
+		name = "GFX_ship_part_dark_energy_power_booster"
+		texturefile = "gfx/interface/icons/ship_parts/ship_part_dark_energy_power_booster.dds"
+	}
+	
 }

@@ -97,7 +97,6 @@ planet_event = {
 	
 	trigger = {
 		mid_game_years_passed >= 0
-		is_original_owner = root.owner
 		has_planet_flag = ringworld_start
 		owner = {
 			has_country_flag = ringworld_empire_navy_spawned
@@ -190,7 +189,7 @@ country_event = {
 	
 	trigger = {
 		is_country_type = ascended_empire
-		has_country_flag = fe_shipset_chosen
+		has_country_flag = fallen_technologies_3_completed
 		OR = {
 			graphical_culture = fallen_spiritualist
 			graphical_culture = fallen_spiritualist_02
@@ -213,7 +212,7 @@ country_event = {
 			graphical_culture = fallen_machine
 			graphical_culture = fallen_machine_02
 			graphical_culture = fallen_megacorp
-			graphical_culture = aryan_01
+			graphical_culture = original_empire_01
 		}
 		any_planet_within_border = {
 			is_planet_class = pc_ringworld_habitable

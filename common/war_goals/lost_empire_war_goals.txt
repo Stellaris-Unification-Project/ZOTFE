@@ -5,29 +5,112 @@
 wg_total_annihilation = {
 	casus_belli = cb_total_annihilation
 
-	hide_if_no_cb = yes
-	total_war = no
+	hide_if_no_cb = no
+	total_war = yes
+	destroy_starbases = yes
 	
 	surrender_acceptance = -1000
-	war_exhaustion = 0.25
+	
+	allowed_peace_offers = {
+		status_quo
+		surrender
+		demand_surrender
+	}
 	
 	set_defender_wargoal = wg_total_annihilation
+	
+	war_exhaustion = 0.25
 
 	potential = {
-		always = yes
+		OR = {
+			is_country_type = ascended_empire
+			is_country_type = awakened_fallen_empire
+		}
+		OR = {
+			from = {
+				OR = {
+					has_valid_civic = civic_fanatic_purifiers
+					has_valid_civic = civic_hive_devouring_swarm
+					has_valid_civic = civic_machine_assimilator
+					has_valid_civic = civic_machine_terminator
+				}
+			}
+			has_country_flag = rebel_lost_empire
+			AND = {
+				is_country_type = awakened_fallen_empire
+				from = {
+					has_country_flag = original_people
+				}
+			}
+			AND = {
+				has_country_flag = original_people
+				from = {
+					is_country_type = awakened_fallen_empire
+				}
+			}
+			AND = {
+				from = {
+					OR = {
+						is_country_type = ascended_empire
+						is_fallen_empire = yes
+					}
+				}
+				OR = {
+					AND = {
+						has_ethic = ethic_fanatic_spiritualist
+						from = { has_ethic = ethic_fanatic_materialist }
+					}
+					AND = {
+						has_ethic = ethic_fanatic_materialist
+						from = { has_ethic = ethic_fanatic_spiritualist }
+					}
+					AND = {
+						has_ethic = ethic_fanatic_xenophile
+						from = { has_ethic = ethic_fanatic_xenophobe }
+					}
+					AND = {
+						has_ethic = ethic_fanatic_xenophobe
+						from = { has_ethic = ethic_fanatic_xenophile }
+					}
+					AND = {
+						has_ethic = ethic_fanatic_militarist
+						from = { has_ethic = ethic_fanatic_pacifist }
+					}
+					AND = {
+						has_ethic = ethic_fanatic_pacifist
+						from = { has_ethic = ethic_fanatic_militarist }
+					}
+					AND = {
+						has_ethic = ethic_fanatic_authoritarian
+						from = { has_ethic = ethic_fanatic_egalitarian }
+					}
+					AND = {
+						has_ethic = ethic_fanatic_egalitarian
+						from = { has_ethic = ethic_fanatic_authoritarian }
+					}						
+				}
+			}
+		}
 	}
 	possible = {
-		always = yes
-	}
-	
-	on_accept  = {
-		
-		save_event_target_as = Annihilator
-		hidden_effect = {
-			event_target:Annihilator = {
-				country_event = { id = lost_empire.16 }
-				remove_country_flag = ae_crusader
+		custom_tooltip = {
+			fail_text = "requires_terrible_opinion_or_supremacist"
+			OR = {
+				opinion_level = { who = from level <= terrible }
+				is_harming_relations_with = from
+				from = { is_at_war_with = prev }
+				OR = {
+					has_policy_flag = "diplo_stance_supremacist"
+					from = { has_policy_flag = "diplo_stance_supremacist" }
+					is_fallen_empire = yes
+					from = { is_fallen_empire = yes }
+				}
+				from = { is_rival = prev }
 			}
+		}
+	}
+	on_accept  = {
+		hidden_effect = {
 			every_country = {
 				if = {
 					limit = {
@@ -41,18 +124,14 @@ wg_total_annihilation = {
 				}
 			}
 		}
+		country_event = { id = lost_empire.16 }
+		remove_country_flag = ae_crusader
+		save_event_target_as = Annihilator
 		from = {
-			hidden_effect = {
-				save_event_target_as = Annihilated
-				event_target:Annihilated = {
-					country_event = { id = lost_empire.13 }
-					remove_country_flag = ae_crusader
-				}
-			}
+			country_event = { id = lost_empire.13 }
+			remove_country_flag = ae_crusader
 			every_subject = {
-				hidden_effect = {
-					country_event = { id = lost_empire.14 }
-				}
+				country_event = { id = lost_empire.14 }
 				every_owned_planet = {
 					destroy_colony = yes
 				}
@@ -103,22 +182,38 @@ wg_total_annihilation = {
 					}	
 				}
 			}
-			
-			root = {
-				save_event_target_as = Annihilator
-				remove_country_flag = ae_crusader
-				country_event = { id = lost_empire.17 }
+		}
+		save_event_target_as = Annihilator
+		every_planet_within_border = {
+			limit = {
+				is_owned_by = from
+				is_colony = yes
 			}
+			destroy_colony = yes				
+		}
+		remove_country_flag = ae_crusader
+		country_event = { id = lost_empire.17 }
 			
-			from = {
-				save_event_target_as = Annihilated
-				remove_country_flag = ae_crusader
-				country_event = { id = lost_empire.17 }
+
+		fromfrom = {
+			save_event_target_as = Annihilated
+			every_planet_within_border = {
+				limit = {
+					is_owned_by = root 
+					is_colony = yes
+				}
+				destroy_colony = yes
 			}
+			remove_country_flag = ae_crusader
+			country_event = { id = lost_empire.17 }
 			
+		}
+		
+		hidden_effect = {
+		
 			every_playable_country = {
 				limit = {
-					NOT = {
+					NOR = {
 						is_same_value = root
 						is_same_value = from
 					}
@@ -131,7 +226,6 @@ wg_total_annihilation = {
 			if = {
 				limit = { 	
 					OR = {
-						is_same_value = root
 						is_in_federation_with = root
 						AND = {
 							is_subject = yes
@@ -140,8 +234,8 @@ wg_total_annihilation = {
 						}
 					}
 				}
-				every_controlled_planet = {
-					limit = { is_owned_by = from }
+				every_planet_within_border = {
+					limit = { is_owned_by = fromfrom }
 					destroy_colony = yes
 					hidden_effect = {
 						solar_system = {
@@ -158,7 +252,6 @@ wg_total_annihilation = {
 			if = {
 				limit = { 	
 					OR = {
-						is_same_value = from
 						is_in_federation_with = from
 						AND = {
 							is_subject = yes
@@ -167,7 +260,7 @@ wg_total_annihilation = {
 						}
 					}
 				}
-				every_controlled_planet = {
+				every_planet_within_border = {
 					limit = { is_owned_by = root }
 					destroy_colony = yes
 					hidden_effect = {
@@ -193,23 +286,99 @@ wg_total_annihilation = {
 wg_banish_ascendancy = {
 	casus_belli = cb_banish_ascendancy
 
-	hide_if_no_cb = yes
+	hide_if_no_cb = no
+	release_occupied_systems_on_status_quo = yes
 	total_war = no
 	
 	surrender_acceptance = -100
-	war_exhaustion = 0.25
+	
+	allowed_peace_offers = {
+		status_quo
+		surrender
+		demand_surrender
+	}
 	
 	set_defender_wargoal = wg_banish_ascendancy
+	
+	war_exhaustion = 0.5
 
 	potential = {
-		always = yes
+		OR = {
+			is_country_type = ascended_empire
+			is_country_type = awakened_fallen_empire
+		}
+		From = {
+			OR = {
+				is_country_type = ascended_empire
+				is_country_type = awakened_fallen_empire
+			}
+		}
+		NAND = {
+			is_galactic_emperor = yes
+			from = { is_galactic_community_member = yes }
+		}
 	}
 	possible = {
-		always = yes
+		custom_tooltip = {
+			fail_text = has_claimed_all_systems
+			from = {
+				OR = {
+					is_country_type = ascended_empire
+					is_country_type = awakened_fallen_empire
+				}
+				any_owned_planet = {
+					is_colony = yes
+					root = {
+						NOT = { has_claim = prev.solar_system }
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = cannot_subjugate_empire_member
+			NAND = {
+				has_galactic_emperor = yes
+				is_galactic_community_member = no
+				from = { is_galactic_community_member = yes }
+			}
+		}
+		custom_tooltip = {
+			fail_text = "cannot_use_against_custodian"
+			from = { is_galactic_custodian = no }
+		}
+		custom_tooltip = {
+			fail_text = "cannot_use_against_emperor"
+			from = { is_galactic_emperor = no }
+		}
+		custom_tooltip = {
+			fail_text = "cannot_use_against_btc"
+			from = { has_been_declared_crisis = no }
+		}
+		custom_tooltip = {
+			fail_text = pax_galactica_active
+			NAND = {
+				is_active_resolution = resolution_emperor_pax_galactica
+				is_galactic_community_member = yes
+				from = { is_galactic_community_member = yes }
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_poor_or_worse_opinion"
+			OR = {
+				opinion_level = { who = from level <= poor }
+				is_harming_relations_with = from
+			}
+		}
 	}
 	
 	on_accept  = {
 		hidden_effect = {
+			from = {
+				add_threat = {
+					who = root
+					amount = 1.0
+				}
+			}
 			save_event_target_as = Banisher
 			event_target:Banisher = {
 				country_event = { id = lost_empire.15 }
@@ -220,7 +389,8 @@ wg_banish_ascendancy = {
 				remove_country_flag = ae_crusader
 				every_subject = {
 					set_subject_of = {
-						who = none
+						who = root
+						subject_type = vassal
 					}
 				}
 				set_subject_of = {
@@ -243,13 +413,22 @@ wg_banish_ascendancy = {
 	
 	on_status_quo = {
 		remove_country_flag = ae_crusader
-		from = {
-			remove_country_flag = ae_crusader
-			every_subject = {
-				set_subject_of = {
-					who = none
+		if = {
+			limit = {
+				exists = last_created_country
+				last_created_country = {
+					has_country_flag = released_empire
 				}
 			}
+
+			last_created_country = {
+				set_subject_of = {
+					who = root
+					subject_type = vassal
+				}
+			}
+		}
+		from = {
 		}
 	}
 	
@@ -265,7 +444,7 @@ wg_dismantle_ascendancy = {
 	total_war = yes
 	surrender_acceptance = -1000
 	
-	set_defender_wargoal = wg_fe_humiliation
+	set_defender_wargoal = wg_humiliation
 
 	potential = {
 		is_country_type = default
@@ -294,19 +473,6 @@ wg_dismantle_ascendancy = {
 	}	
 	
 	on_status_quo = {
-		hidden_effect = {
-			if = {
-				limit = {
-					overlord = {
-						is_country_type = lost_empire
-						is_same_value = from
-					}
-				}
-				set_subject_of = {
-					who = none
-				}
-			}	
-		}
 	}
 	
 	ai_weight = {

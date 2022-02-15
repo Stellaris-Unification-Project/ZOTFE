@@ -1,4 +1,4 @@
-#	The Zenith of Fallen Empires: The Ultimate Edition
+#	The Zenith of Fallen Empires: The Ultimate Emperor Edition
 
 *	https://steamcommunity.com/workshop/filedetails/?id=1322166216
 
